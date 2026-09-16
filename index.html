@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Jayaram | EEE Student Portfolio</title>
+
+    <style>
+
+        /* =========================
+           BASIC RESET
+        ========================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #050816;
+            color: white;
+            overflow-x: hidden;
+        }
+
+
+        /* =========================
+           ANIMATED BACKGROUND
+        ========================== */
+
+        body::before {
+            content: "";
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            background: #e50914;
+            border-radius: 50%;
+            filter: blur(180px);
+            opacity: 0.15;
+            top: 10%;
+            left: -200px;
+            z-index: -1;
+            animation: moveLight 8s infinite alternate;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            background: #0077ff;
+            border-radius: 50%;
+            filter: blur(180px);
+            opacity: 0.15;
+            bottom: 0;
+            right: -200px;
+            z-index: -1;
+            animation: moveLight 10s infinite alternate-reverse;
+        }
+
+        @keyframes moveLight {
+
+            from {
+                transform: translate(0, 0);
+            }
+
+            to {
+                transform: translate(150px, 100px);
+            }
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================== */
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            background: rgba(5, 8, 22, 0.75);
+            backdrop-filter: blur(15px);
+
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #e50914;
+
+            text-shadow:
+                0 0 10px #e50914,
+                0 0 20px #e50914;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: bold;
+            position: relative;
+        }
+
+        nav a::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: #e50914;
+            left: 0;
+            bottom: -5px;
+            transition: 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        nav a:hover {
+            color: #e50914;
+        }
+
+
+        /* =========================
+           HERO
+        ========================== */
+
+        .hero {
+            min-height: 100vh;
+            padding: 130px 8% 70px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            gap: 60px;
+        }
+
+        .hero-text {
+            max-width: 600px;
+            animation: slideLeft 1s ease;
+        }
+
+        @keyframes slideLeft {
+
+            from {
+                opacity: 0;
+                transform: translateX(-80px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero-text small {
+            color: #e50914;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(45px, 7vw, 80px);
+            margin: 10px 0;
+        }
+
+        .hero-text h1 span {
+            color: #e50914;
+
+            text-shadow:
+                0 0 10px #e50914,
+                0 0 30px #e50914;
+        }
+
+        .hero-text h2 {
+            color: #00aaff;
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+
+        .hero-text p {
+            color: #b8c0d0;
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+
+        /* =========================
+           BUTTON
+        ========================== */
+
+        .btn {
+            display: inline-block;
+            padding: 13px 30px;
+
+            background: #e50914;
+            color: white;
+
+            text-decoration: none;
+            font-weight: bold;
+
+            border-radius: 30px;
+
+            box-shadow:
+                0 0 10px #e50914,
+                0 0 25px rgba(229,9,20,0.5);
+
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px) scale(1.05);
+
+            box-shadow:
+                0 0 20px #e50914,
+                0 0 40px rgba(229,9,20,0.8);
+        }
+
+
+        /* =========================
+           SPIDERMAN IMAGE
+        ========================== */
+
+        .hero-image {
+            width: 430px;
+            height: 430px;
+
+            position: relative;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            animation: floating 4s ease-in-out infinite;
+        }
+
+        .hero-image::before {
+            content: "";
+
+            position: absolute;
+
+            width: 420px;
+            height: 420px;
+
+            border-radius: 50%;
+
+            border: 2px solid #e50914;
+
+            box-shadow:
+                0 0 20px #e50914,
+                0 0 50px rgba(229,9,20,0.5);
+
+            animation: rotateRing 8s linear infinite;
+        }
+
+        .hero-image img {
+            width: 390px;
+            height: 390px;
+
+            object-fit: cover;
+
+            border-radius: 50%;
+
+            border: 5px solid #e50914;
+
+            box-shadow:
+                0 0 20px #e50914,
+                0 0 60px rgba(229,9,20,0.5);
+
+            transition: 0.5s;
+        }
+
+        .hero-image img:hover {
+            transform: scale(1.08) rotate(3deg);
+
+            box-shadow:
+                0 0 30px #e50914,
+                0 0 80px #e50914;
+        }
+
+        @keyframes floating {
+
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes rotateRing {
+
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+
+        /* =========================
+           SECTIONS
+        ========================== */
+
+        section {
+            padding: 100px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 40px;
+            margin-bottom: 50px;
+        }
+
+        .section-title span {
+            color: #e50914;
+        }
+
+
+        /* =========================
+           ABOUT
+        ========================== */
+
+        .about {
+            max-width: 850px;
+            margin: auto;
+
+            padding: 35px;
+
+            background: rgba(255,255,255,0.05);
+
+            border: 1px solid rgba(255,255,255,0.1);
+
+            border-radius: 20px;
+
+            backdrop-filter: blur(15px);
+
+            text-align: center;
+
+            transition: 0.4s;
+        }
+
+        .about:hover {
+            transform: translateY(-10px);
+
+            border-color: #e50914;
+
+            box-shadow:
+                0 0 30px rgba(229,9,20,0.25);
+        }
+
+        .about p {
+            color: #c5ccda;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+
+        /* =========================
+           SKILLS
+        ========================== */
+
+        .skills {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(200px, 1fr));
+
+            gap: 25px;
+
+            max-width: 1000px;
+
+            margin: auto;
+        }
+
+        .skill {
+            padding: 30px;
+
+            text-align: center;
+
+            background: rgba(255,255,255,0.05);
+
+            border: 1px solid rgba(255,255,255,0.1);
+
+            border-radius: 20px;
+
+            transition: 0.4s;
+        }
+
+        .skill:hover {
+            transform:
+                translateY(-12px)
+                rotateX(5deg);
+
+            border-color: #e50914;
+
+            box-shadow:
+                0 0 25px rgba(229,9,20,0.4);
+        }
+
+        .skill h3 {
+            color: #e50914;
+            margin-bottom: 10px;
+            font-size: 22px;
+        }
+
+        .skill p {
+            color: #aaa;
+        }
+
+
+        /* =========================
+           PROJECTS
+        ========================== */
+
+        .projects {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(250px, 1fr));
+
+            gap: 30px;
+
+            max-width: 1000px;
+
+            margin: auto;
+        }
+
+        .project {
+            padding: 30px;
+
+            min-height: 220px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,0.08),
+                    rgba(255,255,255,0.02)
+                );
+
+            border: 1px solid rgba(255,255,255,0.1);
+
+            border-radius: 20px;
+
+            transition: 0.5s;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+        .project::before {
+            content: "";
+
+            position: absolute;
+
+            width: 100%;
+            height: 4px;
+
+            top: 0;
+            left: -100%;
+
+            background: #e50914;
+
+            transition: 0.5s;
+        }
+
+        .project:hover::before {
+            left: 0;
+        }
+
+        .project:hover {
+            transform:
+                perspective(800px)
+                rotateY(5deg)
+                translateY(-10px);
+
+            box-shadow:
+                0 15px 40px rgba(0,0,0,0.5);
+
+            border-color: #e50914;
+        }
+
+        .project h3 {
+            color: #e50914;
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        .project p {
+            color: #b9c0cc;
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           CONTACT
+        ========================== */
+
+        .contact {
+            text-align: center;
+        }
+
+        .contact-box {
+            max-width: 700px;
+
+            margin: auto;
+
+            padding: 40px;
+
+            background: rgba(255,255,255,0.05);
+
+            border-radius: 20px;
+
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .contact-box p {
+            margin: 15px;
+            color: #ccc;
+            font-size: 18px;
+        }
+
+        .contact-box a {
+            color: #00aaff;
+            text-decoration: none;
+        }
+
+        .contact-box a:hover {
+            color: #e50914;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            padding: 25px;
+
+            text-align: center;
+
+            background: #02030a;
+
+            color: #888;
+        }
+
+        footer span {
+            color: #e50914;
+        }
+
+
+        /* =========================
+           SCROLL REVEAL
+        ========================== */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            animation: reveal 1s forwards;
+        }
+
+        @keyframes reveal {
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================== */
+
+        @media (max-width: 800px) {
+
+            header {
+                padding: 15px 5%;
+
+                flex-direction: column;
+
+                gap: 15px;
+            }
+
+            nav a {
+                margin: 0 7px;
+                font-size: 14px;
+            }
+
+            .hero {
+                flex-direction: column;
+
+                text-align: center;
+
+                padding-top: 150px;
+            }
+
+            .hero-image {
+                width: 320px;
+                height: 320px;
+            }
+
+            .hero-image img {
+                width: 290px;
+                height: 290px;
+            }
+
+            .hero-image::before {
+                width: 310px;
+                height: 310px;
+            }
+
+            .hero-text h1 {
+                font-size: 50px;
+            }
+
+            .hero-text h2 {
+                font-size: 23px;
+            }
+
+            section {
+                padding: 70px 5%;
+            }
+        }
+
+
+        @media (max-width: 450px) {
+
+            .hero-image {
+                width: 270px;
+                height: 270px;
+            }
+
+            .hero-image img {
+                width: 245px;
+                height: 245px;
+            }
+
+            .hero-image::before {
+                width: 260px;
+                height: 260px;
+            }
+
+            .hero-text h1 {
+                font-size: 42px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         NAVBAR
+    ========================== -->
+
+    <header>
+
+        <div class="logo">
+            JAYARAM
+        </div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+    </header>
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-text">
+
+            <small>WELCOME TO MY PORTFOLIO</small>
+
+            <h1>
+                Hi, I'm <span>Jayaram</span>
+            </h1>
+
+            <h2>
+                Electrical & Electronics Engineering Student
+            </h2>
+
+            <p>
+                I'm a first-year EEE student interested in
+                electronics, electrical circuits, programming,
+                web development and technology.
+            </p>
+
+            <a href="#projects" class="btn">
+                Explore My Work
+            </a>
+
+        </div>
+
+
+        <div class="hero-image">
+
+            <!-- Your uploaded image -->
+            <img src="spiderman.png" alt="Jayaram Portfolio Image">
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         ABOUT
+    ========================== -->
+
+    <section id="about">
+
+        <h2 class="section-title">
+            About <span>Me</span>
+        </h2>
+
+        <div class="about reveal">
+
+            <p>
+                I am Jayaram, a first-year Electrical and Electronics
+                Engineering student. I am passionate about learning
+                electrical systems, electronics, programming and
+                modern technology.
+            </p>
+
+            <br>
+
+            <p>
+                I am currently developing my technical skills through
+                small projects and practical learning. I also enjoy
+                creating websites using HTML and CSS.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         SKILLS
+    ========================== -->
+
+    <section id="skills">
+
+        <h2 class="section-title">
+            My <span>Skills</span>
+        </h2>
+
+        <div class="skills">
+
+            <div class="skill reveal">
+                <h3>HTML</h3>
+                <p>Web Development</p>
+            </div>
+
+            <div class="skill reveal">
+                <h3>CSS</h3>
+                <p>Web Designing</p>
+            </div>
+
+            <div class="skill reveal">
+                <h3>C Programming</h3>
+                <p>Basic Programming</p>
+            </div>
+
+            <div class="skill reveal">
+                <h3>Electrical</h3>
+                <p>Circuit Fundamentals</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         PROJECTS
+    ========================== -->
+
+    <section id="projects">
+
+        <h2 class="section-title">
+            My <span>Projects</span>
+        </h2>
+
+        <div class="projects">
+
+            <div class="project reveal">
+
+                <h3>
+                    Portfolio Website
+                </h3>
+
+                <p>
+                    A modern personal portfolio website built
+                    using HTML and CSS with animations and
+                    responsive design.
+                </p>
+
+            </div>
+
+
+            <div class="project reveal">
+
+                <h3>
+                    LED Circuit
+                </h3>
+
+                <p>
+                    A basic electronics project using LEDs,
+                    resistors and a power supply to understand
+                    fundamental circuit concepts.
+                </p>
+
+            </div>
+
+
+            <div class="project reveal">
+
+                <h3>
+                    Mini Electrical Project
+                </h3>
+
+                <p>
+                    A simple first-year electrical project
+                    based on basic electrical circuit concepts.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CONTACT
+    ========================== -->
+
+    <section class="contact" id="contact">
+
+        <h2 class="section-title">
+            Contact <span>Me</span>
+        </h2>
+
+        <div class="contact-box reveal">
+
+            <p>
+                📧
+                <a href="mailto:jayaram10943@mountzion.ac.in">
+                    jayaram10943@mountzion.ac.in
+                </a>
+            </p>
+
+            <p>
+                📱
+                <a href="tel:7094270722">
+                    +91 70942 70722
+                </a>
+            </p>
+
+            <p>
+                📍 Tamil Nadu, India
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <p>
+            © 2026 <span>Jayaram</span> |
+            EEE Student Portfolio
+        </p>
+
+    </footer>
+
+
+</body>
+</html>
